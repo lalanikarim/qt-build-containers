@@ -2,6 +2,14 @@
 
 ## Overview
 
+This repository provides containerized environments for building Qt applications on Linux. It includes Docker/Podman configurations for Ubuntu-based containers with Qt development tools pre-installed. This setup allows developers to:
+
+- Build Qt projects in a consistent, isolated environment
+- Avoid Qt installation issues on the host system
+- Ensure reproducible builds across different development machines
+- Easily switch between different Qt versions if needed
+
+The containers mount your local Qt installation and project directories as volumes, allowing you to develop on your host machine while building in the container.
 
 
 ## Setup
