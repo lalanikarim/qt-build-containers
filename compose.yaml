@@ -1,0 +1,20 @@
+version: 3.3
+services:
+  ubuntu:
+    platform: linux/amd64
+    build:
+      context: ubuntu
+      additional_contexts:
+        src: .
+    volumes:
+      - ./local-share-qt:/root/.local/share/Qt
+      - ./opt-qt:/opt/Qt
+  oracle:
+    platform: linux/amd64
+    build:
+      context: oracle
+      additional_contexts:
+        src: .
+    volumes:
+      - ./local-share-qt:/root/.local/share/Qt
+      - ./opt-qt:/opt/Qt

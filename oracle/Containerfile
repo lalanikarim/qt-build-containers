@@ -1,0 +1,34 @@
+FROM oraclelinux:9
+
+RUN dnf groupinstall "Development Tools" 
+
+RUN dnf install \
+    less \
+    ca-certificates \
+    git \
+    cmake \
+    libxcb \
+    libxcb-* \
+    libxkbcommon-x11 \
+    libxkbcommon \
+    libX11-xcb \
+    freetype \
+    freetype-devel \
+    fontconfig \
+    fontconfig-devel \
+    dbus \
+    dbus-devel \
+    glib2 \
+    glib2-devel \
+    mesa-libGL \
+    mesa-libGL-devel 
+
+WORKDIR /root
+RUN echo 'export PATH=/opt/Qt/6.9.0/gcc_64/bin:$PATH' >> /root/.bashrc
+
+COPY --from=src ./qt-online-installer-linux-x64-4.9.0.run /root/
+COPY --from=src ./install.sh /root/
+
+RUN chmod +x qt-online-installer-linux-x64-4.9.0.run install.sh 
+
+CMD ["sleep", "infinity"]
